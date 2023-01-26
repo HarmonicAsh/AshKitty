@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+import sys
+Sys.path.appen('/usr/lib/python3.9')
 
 import smbus					#import SMBus module of I2C
 from time import sleep          #import
