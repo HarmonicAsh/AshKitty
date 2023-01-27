@@ -9,33 +9,31 @@ import time
 GPIO.setmode(GPIO.BCM) #GPIO Mode (BOARD / BCM)
 SIG = 18 #set GPIO Pin
 
- 
-def distance():    
-    GPIO.setup(SIG, GPIO.OUT)   
+def distance():
+    GPIO.setup(SIG, GPIO.OUT)
     GPIO.output(SIG, True)
     time.sleep(0.00001)
     GPIO.output(SIG, False)
- 
+
     StartTime = time.time()
     StopTime = time.time()
     print("Test line 1")
     # save StartTime
 
-    GPIO.setup(SIG, GPIO.IN)   
+    GPIO.setup(SIG, GPIO.IN)
     while GPIO.input(SIG) == 0:
         StartTime = time.time()
-    print("Test line 2")
     # save time of arrival
     while GPIO.input(SIG) == 1:
         StopTime = time.time()
-    print("Test line 3")
     # time difference between start and arrival
     TimeElapsed = StopTime - StartTime
     # multiply with the sonic speed (34300 cm/s)
     # and divide by 2, because there and back
     distance = (TimeElapsed * 34300) / 2
- 
+
     return distance
+
 
 if __name__ == '__main__':
     try:
