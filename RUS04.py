@@ -7,26 +7,26 @@ import RPi.GPIO as GPIO
 import time
  
 GPIO.setmode(GPIO.BCM) #GPIO Mode (BOARD / BCM)
-GPIO_IO = 18 #set GPIO Pin
+GPIO_ECHO = 18 #set GPIO Pin
+GPIO_TRIGGER = 18 #set GPIO Pin
+
  
 def distance():
-    GPIO.setup(GPIO_IO, GPIO.OUT)   #Sets the pin to act as an output
-    GPIO.output(GPIO_IO, True)      #Set Trigger to HIGH
-    time.sleep(0.00001)            
-    GPIO.output(GPIO_TRIGGER, False)  #Set Trigger after 0.01ms to LOW
+    GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
+    GPIO.output(GPIO_TRIGGER, True)
+    time.sleep(0.00001)
+    GPIO.output(GPIO_TRIGGER, False)
  
     StartTime = time.time()
     StopTime = time.time()
  
-    GPIO.setup(GPIO_IO, GPIO.IN)    #Sets the pin to act as an input
-
-
+    GPIO.setup(GPIO_TRIGGER, GPIO.in)
     # save StartTime
-    while GPIO.input(GPIO.IO) == 0:
+    while GPIO.input(GPIO_ECHO) == 0:
         StartTime = time.time()
  
     # save time of arrival
-    while GPIO.input(GPIO.IO) == 1:
+    while GPIO.input(GPIO_ECHO) == 1:
         StopTime = time.time()
  
     # time difference between start and arrival
@@ -37,19 +37,6 @@ def distance():
  
     return distance
 
-if __name__ == '__main__':
-    try:
-        print(distance())
-        time.sleep(0.5)
-
-
-
-
-
-
-
-
- 
 if __name__ == '__main__':
     try:
         while True:
