@@ -10,9 +10,11 @@ GPIO.setmode(GPIO.BCM) #GPIO Mode (BOARD / BCM)
 GPIO_ECHO = 18 #set GPIO Pin
 GPIO_TRIGGER = 18 #set GPIO Pin
 
+GPIO.setup(GPIO_ECHO, GPIO.IN)
+GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
+
  
-def distance():
-    GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
+def distance():    
     GPIO.output(GPIO_TRIGGER, True)
     time.sleep(0.00001)
     GPIO.output(GPIO_TRIGGER, False)
@@ -20,7 +22,7 @@ def distance():
     StartTime = time.time()
     StopTime = time.time()
  
-    GPIO.setup(GPIO_TRIGGER, GPIO.in)
+    
     # save StartTime
     while GPIO.input(GPIO_ECHO) == 0:
         StartTime = time.time()
