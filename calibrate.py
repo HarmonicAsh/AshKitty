@@ -19,7 +19,7 @@ def set_zero():
         time.sleep(0.05)
     print("All servos at central position... install all joints now")
 
-def servo_cal:
+def servo_cal():
     pass
 
 def from_main():

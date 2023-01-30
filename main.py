@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-
+#https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuitpython-on-raspberry-pi
 #INSTALL: #pip3 install adafruit-circuitpython-pca9685
+#pip3 install adafruit-circuitpython-motorkit
 
 import sys
 import time
@@ -49,15 +50,15 @@ def read_in():
 
 def check_dist():
     print("\nMeasured distance (centimetres)")
-                for i in range(10):
-                    print(distance()) 
-                    time.sleep(1)
-                start_cat()
+    for i in range(10):
+        print(distance()) 
+        time.sleep(1)
+    start_cat()
 
 if __name__ == '__main__':
     setup_all()
     start_cat
-        while true:
+    while True:
         read_in()
 
 sit = [   # Petoi sit command. Initial array: [1 frame, 0 x axis angle, -30 y axis angle, 1 ???]
